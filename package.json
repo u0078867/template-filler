@@ -1,0 +1,15 @@
+{
+  "name": "template_filler",
+  "version": "0.1.0",
+  "description": "",
+  "main": "filler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "davide monari",
+  "license": "ISC",
+  "dependencies": {
+    "args": "^3.0.8",
+    "mustache": "^2.3.0"
+  }
+}
