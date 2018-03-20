@@ -1,6 +1,6 @@
 {
   "name": "template_filler",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "main": "filler.js",
   "scripts": {
@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "args": "^3.0.8",
-    "mustache": "^2.3.0"
+    "mustache": "^2.3.0",
+    "sprintf-js": "^1.1.1"
   }
 }

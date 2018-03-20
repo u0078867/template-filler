@@ -73,7 +73,7 @@ report</b></font></p>
 			</p>
 		</td>
 		<td width="441" style="border-top: none; border-bottom: none; border-left: 1px solid #00000a; border-right: 1px solid #00000a; padding: 0in 0.08in">
-			<p><font size="2" style="font-size: 9pt">{{date}}</font></p>
+			<p><font size="2" style="font-size: 9pt">{{data1.date}}</font></p>
 		</td>
 	</tr>
 	<tr valign="top">
@@ -274,7 +274,7 @@ Per side and per joint:</p>
 			<p>Neural moment (J)</p>
 		</td>
 		<td width="43%" style="border: 1px solid #00000a; padding: 0.05in 0.1in">
-			<p><font size="2" style="font-size: 9pt">{{mean.work_new_maxvelzone_abs_change_high}}</font></p>
+			<p><font size="2" style="font-size: 9pt">{{#fmt_%,2f}}{{mean.work_new_maxvelzone_abs_change_high}}{{/fmt_%,2f}}</font></p>
 		</td>
 		<td width="21%" style="border: 1px solid #00000a; padding: 0.05in 0.1in">
 			<p>2.03 (0.64)</p>
