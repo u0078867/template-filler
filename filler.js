@@ -15,23 +15,39 @@ let argv = process.argv.slice(2);
 let sections = {};
 let template = fs.readFileSync(argv[0], 'utf8');
 let tokens = mustache.parse(template);
-for (let token of tokens) {
-  if (token[0] == '#') {
-    let section = token[1];
-    let s = section.split('_');
-    switch (s[0]) {
-      case 'fmt':
-        sections[section] = function() {
-          return function(placeholder, render) {
-            let value = render(placeholder);
-            let text = sprintf(s[1].replace(',', '.'), value);
-            return text;
+
+function addFunctionsFromTokensTree(tokens) {
+  if (!tokens) return;
+  for (let token of tokens) {
+    if (token[0] == '#') {
+      let section = token[1];
+      let s = section.split('_');
+      addFunctionsFromTokensTree(token[4]);
+      switch (s[0]) {
+        case 'fmt':
+          sections[section] = function() {
+            return function(placeholder, render) {
+              let value = render(placeholder);
+              let text = sprintf(s[1].replace(',', '.'), value);
+              return text;
+            }
           }
-        }
-        break;
+          break;
+        case 'mul':
+          sections[section] = function() {
+            return function(placeholder, render) {
+              let value = render(placeholder);
+              let newValue = parseFloat(s[1]) * value;
+              return newValue;
+            }
+          }
+          break;
+      }
     }
   }
 }
+
+addFunctionsFromTokensTree(tokens);
 mustache.clearCache();
 
 // create data
